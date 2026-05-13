@@ -1,4 +1,7 @@
-// 1. Agregamos la interfaz para eliminar el error en rojo en App.tsx
+import { SiGithub } from 'react-icons/si';
+import { HiMail } from 'react-icons/hi';
+
+// 1. Interfaz para App.tsx
 interface FooterProps {
     lang: string;
 }
@@ -35,7 +38,7 @@ function Footer({ lang }: FooterProps) {
                 <div className="flex flex-wrap justify-center gap-4">
                     {/* Botón Email */}
                     <button className="flex items-center gap-3 bg-primary text-black font-black uppercase text-xs px-8 py-4 rounded-2xl hover:scale-105 transition-transform">
-                        <span>📧</span>
+                        <HiMail size={18} />
                         {lang === 'es' ? 'Enviar Correo' : 'Send Email'}
                         <span className="text-lg">→</span>
                     </button>
@@ -46,7 +49,7 @@ function Footer({ lang }: FooterProps) {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-3 bg-white/5 border border-white/10 text-white font-black uppercase text-xs px-8 py-4 rounded-2xl hover:bg-white/10 transition-colors">
-                        <span>🐙</span>
+                        <SiGithub size={18} />
                         GitHub
                     </a>
                 </div>

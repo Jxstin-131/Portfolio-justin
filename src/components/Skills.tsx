@@ -1,4 +1,10 @@
-// 1. Agregamos la interfaz para eliminar el error en rojo en App.tsx
+import {
+    SiReact, SiJavascript, SiHtml5, SiTailwindcss,
+    SiGit, SiGithub, SiFigma
+} from 'react-icons/si';
+import { FaShieldAlt } from 'react-icons/fa'; // Usamos este escudo para evitar errores de exportación
+
+// 1. Interfaz para App.tsx
 interface SkillsProps {
     lang: string;
 }
@@ -6,27 +12,45 @@ interface SkillsProps {
 function Skills({ lang }: SkillsProps) {
     const skills = [
         {
-            // Traducción dinámica de categorías
             category: lang === 'es' ? "Frontend" : "Frontend",
-            items: ["React", "JavaScript", "Html", "Tailwind CSS"],
+            items: [
+                { name: "React", icon: <SiReact className="text-[#61DAFB]" /> },
+                { name: "JavaScript", icon: <SiJavascript className="text-[#F7DF1E]" /> },
+                { name: "HTML", icon: <SiHtml5 className="text-[#E34F26]" /> },
+                { name: "Tailwind CSS", icon: <SiTailwindcss className="text-[#38B2AC]" /> },
+            ],
             icon: "💻"
         },
         {
             category: lang === 'es' ? "Control de Versiones" : "Version Control",
-            items: ["Git", "GitHub", "Branch Management"],
+            items: [
+                { name: "Git", icon: <SiGit className="text-[#F05032]" /> },
+                { name: "GitHub", icon: <SiGithub className="text-white" /> },
+            ],
             icon: "🌿"
         },
         {
             category: lang === 'es' ? "Diseño y Lógica" : "Design & Logic",
-            items: ["Figma", "UI/UX", "Problem Solving"],
+            items: [
+                { name: "Figma", icon: <SiFigma className="text-[#F24E1E]" /> },
+                { name: "UI/UX", icon: <div className="w-1 h-1 bg-primary rounded-full" /> },
+                { name: lang === 'es' ? "Lógica" : "Logic", icon: <div className="w-1 h-1 bg-primary rounded-full" /> },
+            ],
             icon: "🎨"
         },
         {
             category: lang === 'es' ? "Habilidades Blandas" : "Soft Skills",
-            // Traducción de los items específicos de Soft Skills
             items: lang === 'es'
-                ? ["Trabajo en Equipo", "Aprendizaje Rápido", "Comunicación", "Sociable"]
-                : ["Teamwork", "Fast Learning", "Communication", "Social Skills"],
+                ? [
+                    { name: "Trabajo en Equipo", icon: "🤝" },
+                    { name: "Aprendizaje Rápido", icon: "⚡" },
+                    { name: "Comunicación", icon: "🗣️" }
+                ]
+                : [
+                    { name: "Teamwork", icon: "🤝" },
+                    { name: "Fast Learning", icon: "⚡" },
+                    { name: "Communication", icon: "🗣️" }
+                ],
             icon: "🤝"
         }
     ];
@@ -49,8 +73,10 @@ function Skills({ lang }: SkillsProps) {
                 {skills.map((skill) => (
                     <div
                         key={skill.category}
-                        className="group bg-[#0a0a0a] border border-white/10 p-6 rounded-[2rem] hover:border-primary/40 transition-all duration-500"
+                        className="group bg-[#0a0a0a] border border-white/10 p-6 rounded-[2rem] hover:border-primary/40 transition-all duration-500 relative overflow-hidden"
                     >
+                        <div className="absolute -top-10 -right-10 w-20 h-20 bg-primary/5 blur-2xl group-hover:bg-primary/20 transition-all" />
+
                         <div className="flex items-center gap-3 mb-6">
                             <div className="text-2xl group-hover:scale-110 transition-transform">{skill.icon}</div>
                             <h4 className="text-white/90 text-[10px] font-black uppercase tracking-widest">
@@ -59,15 +85,20 @@ function Skills({ lang }: SkillsProps) {
                         </div>
 
                         <div className="flex flex-col gap-2">
-                            {skill.items.map((item) => (
+                            {skill.items.map((item, idx) => (
                                 <div
-                                    key={item}
-                                    className="flex items-center gap-3 bg-white/5 border border-white/5 p-3 rounded-xl group-hover:border-white/10 transition-colors"
+                                    key={idx}
+                                    className="flex items-center justify-between bg-white/5 border border-white/5 p-3 rounded-xl hover:bg-white/[0.08] transition-colors"
                                 >
-                                    <div className="w-1 h-1 bg-primary rounded-full" />
-                                    <span className="text-[10px] font-bold text-slate-400 group-hover:text-white transition-colors">
-                                        {item}
-                                    </span>
+                                    <div className="flex items-center gap-3">
+                                        <span className="text-lg opacity-80 group-hover:opacity-100 transition-opacity">
+                                            {item.icon}
+                                        </span>
+                                        <span className="text-[10px] font-bold text-slate-400 group-hover:text-white transition-colors">
+                                            {item.name}
+                                        </span>
+                                    </div>
+                                    <div className="w-1 h-1 bg-white/10 group-hover:bg-primary rounded-full transition-colors" />
                                 </div>
                             ))}
                         </div>
@@ -75,14 +106,20 @@ function Skills({ lang }: SkillsProps) {
                 ))}
             </div>
 
-            {/* Tarjeta de Interés Futuro traducida */}
-            <div className="bg-white/5 border border-dashed border-white/20 p-6 rounded-[2rem] flex flex-col justify-center items-center text-center opacity-80 mt-6">
-                <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-xl mb-3">🛡️</div>
-                <h5 className="text-slate-500 text-[9px] font-black uppercase tracking-widest mb-1">Learning Path</h5>
-                <p className="text-white text-[10px] font-bold uppercase leading-tight">
-                    {lang === 'es' ? 'Explorando' : 'Exploring'} <br />
-                    <span className="text-primary">{lang === 'es' ? 'Ciberseguridad' : 'Cybersecurity'}</span>
-                </p>
+            {/* Learning Path */}
+            <div className="bg-white/5 border border-dashed border-white/20 p-8 rounded-[2rem] flex flex-col md:flex-row justify-between items-center text-center md:text-left opacity-80 mt-6 gap-4">
+                <div className="flex flex-col items-center md:items-start">
+                    <h5 className="text-slate-500 text-[9px] font-black uppercase tracking-widest mb-1 italic">Learning Path</h5>
+                    <p className="text-white text-[12px] font-bold uppercase tracking-tighter">
+                        {lang === 'es' ? 'Actualmente explorando' : 'Currently exploring'}{" "}
+                        <span className="text-primary underline decoration-primary/30 underline-offset-4">
+                            {lang === 'es' ? 'Ciberseguridad' : 'Cybersecurity'}
+                        </span>
+                    </p>
+                </div>
+                <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center text-primary border border-primary/20 animate-pulse">
+                    <FaShieldAlt size={24} />
+                </div>
             </div>
         </section>
     );
