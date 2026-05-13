@@ -1,6 +1,6 @@
 import ProjectCard from '../components/ProjectCard';
 
-// 1. Interfaz para que App.tsx no marque error
+// 1. Interfaz para App.tsx
 interface ProjectsProps {
     lang: string;
 }
@@ -22,55 +22,67 @@ function Projects({ lang }: ProjectsProps) {
                 </h2>
             </div>
 
-            {/* Grilla Bento */}
+            {/* Grilla Bento Equilibrada */}
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
 
                 {/* 1. TALENTMATCH AI */}
                 <ProjectCard
                     title="TalentMatch AI"
                     description={lang === 'es'
-                        ? "Plataforma SaaS de reclutamiento que utiliza procesamiento de lenguaje natural (NLP) para emparejar candidatos con vacantes de forma inteligente."
-                        : "SaaS recruitment platform using natural language processing (NLP) to intelligently match candidates with vacancies."
+                        ? "Plataforma SaaS de reclutamiento con NLP para emparejar candidatos de forma inteligente."
+                        : "SaaS recruitment platform with NLP to intelligently match candidates."
                     }
-                    tags={["React", "NLP", "AI", "Tailwind"]}
-                    className="md:col-span-8 md:row-span-1"
-                    lang={lang} // <--- ESTO ES LO QUE FALTABA PARA QUITAR EL ROJO
+                    tags={["React", "NLP", "AI"]}
+                    className="md:col-span-6 md:row-span-1"
+                    lang={lang}
                 />
 
-                {/* 2. SMART BIRD FEEDER */}
-                <ProjectCard
-                    title="Smart Bird Feeder"
-                    description={lang === 'es'
-                        ? "Sistema IoT con ESP32 y MicroPython. Monitoreo y alimentación automatizada con sensores integrados."
-                        : "IoT system with ESP32 and MicroPython. Automated monitoring and feeding with integrated sensors."
-                    }
-                    tags={["IoT", "ESP32", "MicroPython"]}
-                    className="md:col-span-4 md:row-span-1"
-                    lang={lang} // <--- PASAMOS EL IDIOMA AL HIJO
-                />
-
-                {/* 3. USER EXPLORER */}
+                {/* 2. USER EXPLORER (El de la API de personas) */}
                 <ProjectCard
                     title="User Explorer"
                     description={lang === 'es'
-                        ? "Dashboard dinámico para gestión de personal con consumo de APIs externas y manejo de estados complejos."
-                        : "Dynamic dashboard for personnel management consuming external APIs and complex state handling."
+                        ? "Explorador dinámico que consume una API de terceros para generar perfiles en tiempo real."
+                        : "Dynamic explorer consuming a third-party API to generate profiles in real-time."
                     }
-                    tags={["React", "Vite", "API"]}
-                    className="md:col-span-4 md:row-span-1"
-                    lang={lang} // <--- PASAMOS EL IDIOMA AL HIJO
+                    tags={["React", "API Fetching", "Dynamic UI"]}
+                    className="md:col-span-6 md:row-span-1"
+                    lang={lang}
                 />
 
-                {/* 4. CYBERSECURITY SYSTEM */}
+                {/* 3. DYNAMIC INTERACTIVE CARD */}
                 <ProjectCard
-                    title="ISO 27001 Metrics"
+                    title="Interactive Card"
                     description={lang === 'es'
-                        ? "Diseño de sistema de procesamiento local bajo estándares internacionales de seguridad y evaluación de riesgos informáticos."
-                        : "Local processing system design under international security standards and computer risk assessment."
+                        ? "Componente interactivo con actualización de estado bidireccional y validación instantánea."
+                        : "Interactive component with two-way state updates and instant validation."
                     }
-                    tags={["Cybersecurity", "ISO/IEC 27001", "Security"]}
-                    className="md:col-span-8 md:row-span-1"
-                    lang={lang} // <--- PASAMOS EL IDIOMA AL HIJO
+                    tags={["State Management", "Hooks"]}
+                    className="md:col-span-4 md:row-span-1"
+                    lang={lang}
+                />
+
+                {/* 4. SMART BIRD FEEDER */}
+                <ProjectCard
+                    title="Smart Bird Feeder"
+                    description={lang === 'es'
+                        ? "Sistema IoT con ESP32 para monitoreo y alimentación automatizada de aves."
+                        : "IoT system with ESP32 for automated bird monitoring and feeding."
+                    }
+                    tags={["IoT", "ESP32", "MicroPython"]}
+                    className="md:col-span-4 md:row-span-1"
+                    lang={lang}
+                />
+
+                {/* 5. ISO 27001 METRICS */}
+                <ProjectCard
+                    title="Security Metrics"
+                    description={lang === 'es'
+                        ? "Evaluación de riesgos y métricas de seguridad basadas en estándares ISO/IEC."
+                        : "Risk assessment and security metrics based on ISO/IEC standards."
+                    }
+                    tags={["Cybersecurity", "ISO 27001"]}
+                    className="md:col-span-4 md:row-span-1"
+                    lang={lang}
                 />
             </div>
         </section>
