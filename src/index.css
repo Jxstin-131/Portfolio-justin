@@ -1,1 +1,34 @@
 @import "tailwindcss";
+
+@theme {
+    --color-dark: #050505;
+    --color-primary: #e11d48;
+}
+
+@keyframes pulse-dots {
+
+    0%,
+    100% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+.animate-dots {
+    animation: pulse-dots 4s ease-in-out infinite;
+}
+
+.bg-dots {
+    /* Forzamos color sólido para testear */
+    background-image: radial-gradient(#e11d48 1.5px, transparent 1.5px);
+    background-size: 32px 32px;
+}
+
+.mask-radial {
+    mask-image: radial-gradient(circle at center, white, transparent 80%);
+    /* Añadimos webkit para compatibilidad total */
+    -webkit-mask-image: radial-gradient(circle at center, white, transparent 80%);
+}
