@@ -2,7 +2,7 @@ import { useState } from 'react'; // 1. Importamos el hook para el estado
 import './index.css';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Projects from './data/Projects';
+import Projects from './Data/Projects';
 import About from './components/About';
 import Skills from './components/Skills';
 import Footer from './components/Footer';
